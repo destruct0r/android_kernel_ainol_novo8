@@ -98,7 +98,7 @@ fi
 rm -rf initramfs
 mkdir initramfs
 cd initramfs
-cpio -i < ../initramfs.cpio 
+cpio -i --no-absolute-filenames < ../initramfs.cpio
 echo "initramfs.cpio extracted"
 cd ..
 chmod -R 777 initramfs
