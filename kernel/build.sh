@@ -76,10 +76,14 @@ fi
 
 echo $USEOUTDIR
 if test -f $USEOUTDIR"arch/arm/boot/uImage"; then
+	mkimage -A arm -O linux -a 0 -e 0 -T script -C none -n "Kyorakernel Script" -d ../bootscript ../aml_autoscript
+
 	TARBALL=$KBUILD_BUILD_VERSION-boot.tar
 
 	echo "  TAR     $TARBALL"
-	tar cf $TARBALL arch/arm/boot/uImage
+	cp arch/arm/boot/uImage ./
+	tar cf $TARBALL uImage ../aml_autoscript
+	rm uImage
 else
 	echo "Will not tarball as make didn't produce uImage"
 fi

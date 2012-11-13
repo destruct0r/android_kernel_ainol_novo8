@@ -1,0 +1,2 @@
+fatload mmc 0 82000000 uImage
+bootm 82000000
